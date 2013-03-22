@@ -1,0 +1,69 @@
+<h2>Viewing All Users</h2>
+
+<!-- view for seeing all users -->
+
+<table class="table table-striped table-bordered">
+  <tr>
+    <th class="center">ID</th>
+    <th class="center">Username</th>
+    <th class="center">Full Name</th>
+    <th class="center">Email Address</th>
+    <th class="center">Local?</th>
+    <th class="center">Over 18?</th>
+    <th class="center">Administrator?</th>
+    <th> </th>
+    <th> </th>
+  <% @allUsers.each do |u| %>
+    <% if u.id == session[:id] %>
+      <tr class="info">
+    <% else %>
+      <tr>
+    <% end %>
+        <td class="center">
+          <%= u.id %>
+        <td>
+          <%= u.username %>
+        </td>
+        <td>
+          <%= u.fullname %>
+        </td>
+        <td>
+          <%= u.email %>
+        </td>
+        <td class="center">
+          <% if u.local %>
+            &#10004;
+          <% else %>
+            &#10006;
+          <% end %>
+        </td>
+        <td class="center">
+          <% if u.over_18 %>
+            &#10004;
+          <% else %>
+            &#10006;
+          <% end %>
+        </td>
+        <td class="center">
+          <% if u.admin %>
+            &#10004;
+          <% else %>
+            &#10006;
+          <% end %>
+        </td>
+        <td class="center">
+          <% if u.id != session[:id] %>
+          <%= link_to "Delete", {:action => "delete",:id => u.id}, :class => "btn btn-small btn-danger" %>
+          <% end %>
+        </td>
+        <td class="center">
+          <%= link_to "Edit", {:action => "edit", :id => u.id}, :class => "btn btn-small btn-warning" %>
+        </td>
+      </tr>
+  <% end %>
+  </table>
+  <div class="row-fluid">
+    <div class="span3">
+      <%= link_to " Register New User", {:action => "new"}, :class => "btn btn-success" %>
+    </div>
+  </div>

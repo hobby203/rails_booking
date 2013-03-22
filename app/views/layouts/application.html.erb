@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Devonshire Institute</title> <!-- title to appear in browser tab/title -->
+    <!-- links for all required JS files & CSS -->
+    <%= javascript_include_tag  "http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js",          :media => "all" %>
+    <%= javascript_include_tag  "bootstrap",        :media => "all" %>
+    <%= stylesheet_link_tag     "application",      :media => "all" %>
+    <!-- creates favicon for webpage -->
+    <%= favicon_link_tag 'favicon.ico' %>
+    <!-- tags to prevent XSRF attacks -->
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="navbar navbar-static-top navbar-inverse">
+      <div class="navbar-inner">
+        <a href='/' class="brand">Devonshire Institute</a> <!-- title for navbar -->
+        <ul class="nav">
+          <li class="divider-vertical"></li>
+          <!-- link to view rooms page -->
+          <li><%= link_to "Rooms",  :controller => "room",  :action => "view"%></li>
+          <!-- link to account page -->
+          <li><%= link_to "Account",  :controller => "user",  :action => "account" %></li>
+   
+          <!-- Dropdown for creating and managing bookings -->
+   
+          <li><a href='#' class="dropdown-toggle" data-toggle="dropdown"> Bookings </a>
+            <ul class="dropdown-menu">
+              <!-- link to view all bookings -->
+              <li class="dopdown"><%= link_to "View Bookings",  {:controller => "booking", :action =>"view", :view => "own"} %></li>
+              <!-- link to create a new booking -->
+              <li class="dropdown"><%= link_to "New Booking",    :controller => "booking", :action =>"new" %></li>
+            </ul>
+          </li>
+
+          <!-- Link to admin panel, if user is an administrator -->
+
+          <% if session[:id] && @current_user.admin %>
+            <li><%= link_to "Admin", :controller => "user", :action => "view" %></li>
+          <% end %>
+
+          <!-- Link to log in, if logged out -->
+
+          <% if session[:id].nil? %> <!-- checks if a user is logged in -->
+            <li><%= link_to "Log In",  :controller => "user", :action => "login" %></li>
+          <% end %>
+
+          <!-- Link to log out, if logged in -->
+
+          <% unless session[:id].nil? %> <!-- checks if a user is logged in -->
+            <li><%= link_to "Log Out",  :controller => "user", :action => "process_logout" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <br/>
+    <div class="row-fluid">
+      <div class="span8 offset2">
+        <!-- checks if any info messages were passed from a controller -->
+        <% if flash[:info] %>
+          <div class="alert alert-info center">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <!-- displays them in a blue box -->
+            <%= flash[:info] %>
+          </div>
+        <% end %>
+        <!-- checks if any success messages were passed from a controller -->
+        <% if flash[:message] %>
+          <div class="alert alert-success center">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <!-- displays them in a green box -->
+            <%= flash[:message] %>
+          </div>
+        <% end %>
+        <!-- checks if any error messages were passed from a controller -->
+        <% if flash[:error] %>
+          <div class="alert alert-error center">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <!-- displays them in a red box -->
+            <%= flash[:error] %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span8 offset2">
+          <!-- Content generated from controllers will be put here -->
+          <%= yield %>
+          <br/>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

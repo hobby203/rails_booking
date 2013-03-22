@@ -1,0 +1,20 @@
+<div class="row-fluid">
+  <div class="span2">
+    <h3>Reset Password</h3>
+  </div>
+  <div class="span3 offset1">
+    <br/>
+    <%= form_tag :action => "process_reset" do %>
+      <%= text_field "user", "username", :placeholder => "Account Username" %>
+  </div>
+  <div class="span3">
+    <br/>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span3 offset3">
+      <%= submit_tag "Reset", :class => "btn btn-primary" %>
+      <%= link_to "Cancel", :back, :class => "btn btn-info"%>
+    <% end %>
+  </div>
+</div>

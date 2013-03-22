@@ -1,0 +1,32 @@
+<!-- view for editing a user -->
+<div class="row-fluid">
+  <div class="span8 offset2">
+    <% if @booking_toEdit.errors.any? %> <!-- if the user has tried to create a booking before, without success, errors will show here -->
+      <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <% @booking_toEdit.errors.full_messages.each do |msg| %> <!-- for each message in the array of messages -->
+            <%= msg %><br/> <!-- output the error message into the error dialogue -->
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span2">
+    <h2>Editing Booking</h2> <!-- page title -->
+  </div>
+  <div class="span7 offset1">
+      <%= form_for @booking_toEdit, :url => { :action => :process_edit } do |b| %> <!-- starts the form for the booking_toEdit, telling RoR that the submit button will link to the "process_edit" function -->
+      <%= b.collection_select :room_id, Room.all, :id, :name %> <!-- select box for the booking's room -->
+      <%= b.text_field :event_type, :placeholder => "Type of Event" %> <!-- text input for the booking event's type -->
+      <%= b.text_field :attendees, :placeholder => "Number in Attendance" %> <!-- text input for number of people in attendance -->
+      <%= b.text_area :details, {:size => "10x10", :placeholder => "Any extra details?"} %> <!-- text field for any extra details about the event -->
+      <%= b.select(:bar, [["Yes",true],["No",false]], :prompt => "Will you require the bar?") %> <!-- select box for if the booking will need the bar facility -->
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span2 offset3">
+      <%= b.submit "Confirm", :class => "btn btn-info" %> <!-- button to confirm all input, and pass it via the params[] to the process_edit function -->
+    <% end %>
+  </div>
+</div>

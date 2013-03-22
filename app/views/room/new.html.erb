@@ -1,0 +1,33 @@
+<div class="row-fluid">
+  <div class="span8 offset2">
+    <% if @newRoom.errors.any? %>
+      <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <% @newRoom.errors.full_messages.each do |msg| %>
+            <%= msg %><br/>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span2">
+    <h2>Creating New Room</h2>
+  </div>
+  <div class="span3 offset1">
+    <br/>
+    <%= form_for @newRoom, :url => {:action => "process_new"} do |r| %>
+      <%= r.text_field :name, :placeholder => "Room Name" %>
+      <%= r.text_field :capacity, :placeholder => "Room Capacity" %>
+      <%= r.text_field :base_rate, :placeholder => "Base price, in GBP" %>
+      <%= r.text_area :description, { :size => "10x10", :placeholder => "Room Description"} %><br/>
+      Does this room have a stage? <%= r.check_box :stage %><br/>
+      Does this room have a kitchen? <%= r.check_box :kitchen %>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span2 offset3">
+      <%= r.submit "Create", :class => "btn btn-info" %>
+    <% end %>
+  </div>
+</div>

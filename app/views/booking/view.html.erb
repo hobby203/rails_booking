@@ -1,0 +1,74 @@
+<!-- view for viewing all bookings -->
+<h2><%= @title %></h2><br/> <!-- creates the title, depending on whether the user has chosen to view their own, or all bookings  -->
+<% if @own %> <!-- if the user is only viewing their own bookings -->
+  <%= link_to "Show All Bookings", {:action => "view", :view => "all"}, :class => "btn btn-success pull-right" %> <!-- show a link to view all bookings -->
+<% else %> <!-- if the user is viewing all bookings -->
+  <%= link_to "Show Own Bookings", {:action => "view", :view => "own"}, :class => "btn btn-success pull-right" %> <!-- show a link to view their own bookings -->
+<% end %>
+
+<% @bookings.sort_by!{|b| b.start}.each do |b| %> <!-- repeats for every booking in @bookings, ordered by start date -->
+  <div class="row-fluid">
+    <div class="span9">
+      <% if b.start.today? && b.finish.future?%> <!-- if the booking starts today and hasn't finished yet -->
+        <div class="alert alert-success"> <!-- give it a green box -->
+      <% else %>
+        <div class="alert alert-info"> <!-- otherwise give it a blue box -->
+      <% end %>
+          <% if @current_user.admin || @current_user.id == b.user_id %> <!-- checks if the the current user is an admin, or the booking belongs to the current user -->
+            <%= link_to "Edit", {:action => "edit", :id => b.id}, :class => "btn btn-small btn-warning pull-right" %> <!-- creates link to edit booking -->
+            <%= link_to "Delete", {:action => "delete", :id => b.id}, :class => "btn btn-small btn-danger pull-right" %> <!-- creates link to delete booking -->
+          <% end %>
+          <table> <!-- starts table for showing booking details -->
+            <tr>
+              <td style="width: 150px"><strong>Reserved Room:</strong></td>
+              <td><%= Room.find(b.room_id).name %></td> <!-- displays the room's name -->
+            </tr>
+            <tr>
+              <td><strong>Owner</strong></td>
+              <td><%= b.user.fullname %></td> <!-- displays the full name of the user who owns the booking -->
+            </tr>
+            <tr>
+              <td><strong>Start Date:</strong></td>
+              <td><%= b.start.to_date %></td> <!-- displays the start date of the booking -->
+            </tr>
+            <tr>
+              <td><strong>Start Time:</strong></td>
+              <td><%= b.start.strftime("%T") %></td> <!-- displays the start time of the booking -->
+            </tr>
+            <% if b.start.to_date != b.finish.to_date %> <!-- checks if the booking finishes the same day that it starts -->
+              <tr>
+                <td><strong>Finish Date:</strong></td>
+                <td><%= b.finish.to_date %></td> <!-- if it doesn't, display the finish date -->
+              </tr>
+            <% end %>
+            <tr>
+              <td><strong>Finish Time:</strong></td>
+              <td><%= b.finish.strftime("%T") %></td> <!-- displays the finish time of the booking -->
+            </tr>
+            <tr>
+              <td><strong>Bar:</strong></td>
+              <% if b.bar %>
+                <td>&#10004;</td> <!-- displays a check mark if the booking has a bar -->
+              <% else %>
+                <td>&#10006;</td> <!-- displays a cross mark otherwise -->
+              <% end %>
+            </tr>
+            <tr>
+              <td><strong>Event Type:</strong></td>
+              <td><%= b.event_type %></td> <!-- display's the booking's event type -->
+            </tr>
+            <% if b.user_id == @current_user.id %> <!-- if the booking's owner is the logged in user -->
+              <tr>
+                <td><strong>Total Price:</strong></td>
+                <td><%= "£"+b.total_price.to_f.to_s %></td> <!-- display's the booking's total cost -->
+              </tr>
+            <% end %>
+            <tr>
+              <td><strong>Extra Details:</strong></td>
+              <td><%= b.details %></td> <!-- displays any extra details about the booking -->
+            </tr>
+          </table>
+        </div>
+    </div>
+  </div>
+<% end %>

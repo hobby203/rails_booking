@@ -1,0 +1,57 @@
+<!-- title -->
+<h2>
+  Available Rooms
+  <small>
+    <p>This is a comprehensive list of all rooms available for booking, please make sure to read all details</p><br/>
+  </small>
+</h2>
+<!-- /title -->
+<% if @current_user && @current_user.admin %>
+  <%= link_to "New Room", {:action => "new"}, :class => "btn btn-success pull-right" %>
+  <!-- creates a button to create a new room, if the user logged in is an administrator -->
+<% end %>
+
+<% @rooms.each do |r| %> <!-- start a for loop for each room in the table -->
+  <div class="row-fluid">
+    <div class="span6 offset1">
+      <div class="well">
+        <% if @current_user && @current_user.admin %> <!-- creates buttons for editing & deleting, if the user logged in is an admin -->
+          <%= link_to "Edit", {:action => "edit", :id => r.id}, :class => "btn btn-small btn-warning pull-right" %>
+          <%= link_to "Delete", {:action => "delete", :id => r.id}, :class => "btn btn-small btn-danger pull-right" %>
+        <% end %>
+        <!-- creates  a table with each rooms's detail -->
+        <h4><%= r.name %></h4><br/>
+        <%= r.description %><br/>
+        <table>
+          <tr>
+            <td><strong>Capacity:</strong></td>
+            <td><%= r.capacity %></td>
+          </tr>
+          <tr>
+            <td style="width: 150px"><strong>Base Rate per Hour:</strong></td>
+            <td><%= r.base_rate %></td>
+          </tr>
+          <tr>
+            <td><strong>Has Stage?</strong></td>
+            <% if r.stage %>
+              <td>&#10004;</td>
+            <% else %>
+              <td>&#10006;</td>
+            <% end %>
+          </tr>
+          <tr>
+            <td><strong>Has Kitchen?</strong></td>
+            <% if r.kitchen %>
+              <td>&#10004;</td>
+            <% else %>
+              <td>&#10006;</td>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="span2">
+      <%= image_tag(r.name+".jpg", :alt => r.name+" Image", :class => "img-rounded") %>
+    </div>
+  </div>
+<% end %>

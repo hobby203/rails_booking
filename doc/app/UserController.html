@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class UserController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/user_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-account">#account</a>
+    
+    <li><a href="#method-i-delete">#delete</a>
+    
+    <li><a href="#method-i-edit">#edit</a>
+    
+    <li><a href="#method-i-login">#login</a>
+    
+    <li><a href="#method-i-new">#new</a>
+    
+    <li><a href="#method-i-password">#password</a>
+    
+    <li><a href="#method-i-process_delete">#process_delete</a>
+    
+    <li><a href="#method-i-process_edit">#process_edit</a>
+    
+    <li><a href="#method-i-process_login">#process_login</a>
+    
+    <li><a href="#method-i-process_logout">#process_logout</a>
+    
+    <li><a href="#method-i-process_new">#process_new</a>
+    
+    <li><a href="#method-i-process_password">#process_password</a>
+    
+    <li><a href="#method-i-process_reset">#process_reset</a>
+    
+    <li><a href="#method-i-reset">#reset</a>
+    
+    <li><a href="#method-i-view">#view</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Booking.html">Booking</a>
+  
+    <li><a href="./BookingController.html">BookingController</a>
+  
+    <li><a href="./BookingHelper.html">BookingHelper</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./MailUser.html">MailUser</a>
+  
+    <li><a href="./Room.html">Room</a>
+  
+    <li><a href="./RoomController.html">RoomController</a>
+  
+    <li><a href="./RoomHelper.html">RoomHelper</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UserController.html">UserController</a>
+  
+    <li><a href="./UserHelper.html">UserHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class UserController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-account" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">account</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="account-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">account</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- account-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- account-method -->
+
+    
+      <div id="method-i-delete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="delete-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+    <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+    <span class="ruby-ivar">@user_toDelete</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-ivar">@id</span>)
+    <span class="ruby-ivar">@title</span> = <span class="ruby-string">&quot;Removing User Account&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@user_toDelete</span> = <span class="ruby-ivar">@current_user</span>
+    <span class="ruby-ivar">@title</span> = <span class="ruby-string">&quot;Removing your Account&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- delete-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- delete-method -->
+
+    
+      <div id="method-i-edit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+    <span class="ruby-ivar">@user_toEdit</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@user_toEdit</span> = <span class="ruby-ivar">@current_user</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- edit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- edit-method -->
+
+    
+      <div id="method-i-login" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">login</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="login-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">login</span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:info</span>] = <span class="ruby-string">&quot;&lt;strong&gt;Warning!&lt;/strong&gt; If you have not already registered, you will need to do so before you can continue&quot;</span>.<span class="ruby-identifier">html_safe</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- login-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- login-method -->
+
+    
+      <div id="method-i-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@newUser</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:info</span>] = <span class="ruby-string">&quot;&lt;strong&gt;Important!&lt;/strong&gt; Please make sure to include a correct email address, as this is how we will notify you of your bookings&quot;</span>.<span class="ruby-identifier">html_safe</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+      <div id="method-i-password" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">password</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="password-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 108</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">password</span>
+  <span class="ruby-ivar">@user_toEdit</span> = <span class="ruby-ivar">@current_user</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- password-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- password-method -->
+
+    
+      <div id="method-i-process_delete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_delete</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_delete-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_delete</span>
+  <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+  <span class="ruby-ivar">@user_toDelete</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-ivar">@id</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@user_toDelete</span>.<span class="ruby-identifier">bookings</span>.<span class="ruby-identifier">any?</span>
+    <span class="ruby-ivar">@user_toDelete</span>.<span class="ruby-identifier">bookings</span>.<span class="ruby-identifier">destroy_all</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:info</span>] = <span class="ruby-string">&quot;Account removed successfully&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@user_toDelete</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@current_user</span>
+    <span class="ruby-ivar">@user_toDelete</span>.<span class="ruby-identifier">destroy</span>
+    <span class="ruby-identifier">process_logout</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@user_toDelete</span>.<span class="ruby-identifier">destroy</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;view&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_delete-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_delete-method -->
+
+    
+      <div id="method-i-process_edit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_edit</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_edit-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_edit</span>
+  <span class="ruby-ivar">@user_toEdit</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@user_toEdit</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user</span>])
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:message</span>] = <span class="ruby-string">&quot;Edit was successful&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@current_user</span>.<span class="ruby-identifier">admin</span>
+      <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;view&quot;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;account&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;edit&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_edit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_edit-method -->
+
+    
+      <div id="method-i-process_login" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_login</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_login-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_login</span>
+  <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user</span>][<span class="ruby-value">:username</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:user</span>][<span class="ruby-value">:password</span>])
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>
+    <span class="ruby-identifier">session</span>[<span class="ruby-value">:id</span>] = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:message</span>] = <span class="ruby-string">&quot;Logged in Successfully&quot;</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:error</span>] = <span class="ruby-string">&quot;Login Unsuccesful&quot;</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-string">&quot;login&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_login-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_login-method -->
+
+    
+      <div id="method-i-process_logout" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_logout</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_logout-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_logout</span>
+  <span class="ruby-identifier">session</span>[<span class="ruby-value">:id</span>] = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:message</span>] = <span class="ruby-string">&quot;Logged Out Successfully&quot;</span>
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_logout-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_logout-method -->
+
+    
+      <div id="method-i-process_new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_new</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_new-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_new</span>
+  <span class="ruby-ivar">@newUser</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user</span>])
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:user</span>][<span class="ruby-value">:admin</span>]
+    <span class="ruby-ivar">@newUser</span>.<span class="ruby-identifier">admin</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@newUser</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-constant">MailUser</span>.<span class="ruby-identifier">welcome</span>(<span class="ruby-ivar">@newUser</span>).<span class="ruby-identifier">deliver</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@current_user</span>
+      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:message</span>] = <span class="ruby-string">&quot;New user created successfully&quot;</span>
+      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:message</span>] = <span class="ruby-string">&quot;Your account has been created, and you have been logged in&quot;</span>
+      <span class="ruby-identifier">session</span>[<span class="ruby-value">:id</span>] = <span class="ruby-ivar">@newUser</span>.<span class="ruby-identifier">id</span>
+      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;new&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_new-method -->
+
+    
+      <div id="method-i-process_password" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_password</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_password-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_password</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">BCrypt</span><span class="ruby-operator">::</span><span class="ruby-constant">Engine</span>.<span class="ruby-identifier">hash_secret</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:oldPass</span>], <span class="ruby-ivar">@current_user</span>.<span class="ruby-identifier">password_salt</span>) <span class="ruby-operator">!=</span> <span class="ruby-ivar">@current_user</span>.<span class="ruby-identifier">password_hash</span>
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:error</span>] = <span class="ruby-string">&quot;Your current password was incorrect&quot;</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;password&quot;</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:newPass</span>] <span class="ruby-operator">!=</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:newPassCheck</span>]
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:error</span>] = <span class="ruby-string">&quot;Your new passwords didn't match&quot;</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;password&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:message</span>] = <span class="ruby-string">&quot;Password changed successfully&quot;</span>
+    <span class="ruby-ivar">@current_user</span>.<span class="ruby-identifier">password</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:newPass</span>]
+    <span class="ruby-ivar">@current_user</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;account&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_password-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_password-method -->
+
+    
+      <div id="method-i-process_reset" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_reset</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_reset-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 130</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_reset</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_username</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user</span>][<span class="ruby-value">:username</span>])
+    <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_username</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user</span>][<span class="ruby-value">:username</span>])
+    <span class="ruby-ivar">@newPass</span> = <span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">hex</span>(<span class="ruby-value">8</span>)
+    <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">password</span> = <span class="ruby-ivar">@newPass</span>
+    <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-constant">MailUser</span>.<span class="ruby-identifier">passreset</span>(<span class="ruby-ivar">@user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-ivar">@newPass</span>).<span class="ruby-identifier">deliver</span>
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:message</span>] = <span class="ruby-string">&quot;Password reset successfully, please check your emails for your new password&quot;</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:error</span>] = <span class="ruby-string">&quot;An account with that username was not found&quot;</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;reset&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_reset-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_reset-method -->
+
+    
+      <div id="method-i-reset" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reset</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reset-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 127</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reset</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reset-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reset-method -->
+
+    
+      <div id="method-i-view" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">view</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="view-source">
+            <pre><span class="ruby-comment"># File app/controllers/user_controller.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">view</span>
+  <span class="ruby-ivar">@allUsers</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- view-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- view-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.1.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

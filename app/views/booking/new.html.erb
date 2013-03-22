@@ -1,0 +1,46 @@
+<!-- view for creating a new booking -->
+<div class="row-fluid">
+  <div class="span8 offset2">
+    <% if @newBooking.errors.any? %> <!-- if the user has tried to create the booking already, if there were any errors they will appear here -->
+      <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <% @newBooking.errors.full_messages.each do |msg| %> <!-- for each message in the array of errors -->
+            <%= msg %><br/> <!-- output the message to the error dialogue -->
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span2">
+    <h2>Creating New Booking</h2> <!-- page title -->
+  </div>
+  <div class="span7 offset1">
+    <br/>
+    <%= form_for @newBooking, :url => { :action => :process_new } do |b| %> <!-- starts form for creating a new booking, with the newBooking object -->
+      <h1><small>Start Time</small></h1>
+      <%= b.datetime_select :start %> <!-- creates a datetime selector for the booking's start date & time -->
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span7 offset3">
+    <h1><small>Finish Time</small></h1>
+      <%= b.datetime_select :finish %> <!-- creates a datetime selector for the booking's finish date & time -->
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span7 offset3">
+    <h1><small>Other Details</small></h1>
+      <%= b.collection_select :room_id, Room.all, :id, :name %> <!-- creates a selection box for the booking's location within the hall -->
+      <%= b.text_field :event_type, :placeholder => "Type of Event" %> <!-- text input field for the booking's event type -->
+      <%= b.text_field :attendees, :placeholder => "Number in Attendance" %> <!-- text input for the number of people in attendance -->
+      <%= b.text_area :details, {:size => "10x10", :placeholder => "Any extra details?"} %> <!-- text field for any extra details required -->
+      <%= b.select(:bar, [["Yes",true],["No",false]], :prompt => "Will you require the bar?") %> <!-- select box for whether or not the booking will require the bar -->
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span2 offset3">
+      <%= b.submit "Create Booking", :class => "btn btn-info" %> <!-- creates a button for submitting the form, passing the inputs in the params[] to the process_new function -->
+    <% end %>
+  </div>
+</div>

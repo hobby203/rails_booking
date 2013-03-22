@@ -1,0 +1,17 @@
+<!-- view for deleting a booking -->
+<div class="row-fluid">
+  <div class="span2">
+    <h2> Deleting Booking </h2> <!-- page title -->
+  </div>
+  <div class="span7 offset1">
+    <h2><small>You are about to delete this booking, this action is irreversible.</small></h2> <!-- warns the user that the action is irreversible -->
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span4 offset3">
+    <%= link_to "Confirm", {:action => "process_delete", :id => @booking_toDelete.id }, :class => "btn btn-danger" %>
+    <!-- creates a button to delete the account, passing the id to the process_delete function -->
+    <%= link_to "Cancel", :back, :class => "btn btn-warning" %>
+    <!-- creates a button to cancel the deletion, which will send the user to the previous page -->
+  </div>
+</div>

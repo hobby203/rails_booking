@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  capacity: 1
+  base_rate: 1
+  stage: false
+  kitchen: false
+
+two:
+  name: MyString
+  description: MyText
+  capacity: 1
+  base_rate: 1
+  stage: false
+  kitchen: false

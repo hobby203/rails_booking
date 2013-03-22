@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  room_id: 1
+  user_id: 1
+  start: 2013-02-20 00:32:26
+  finish: 2013-02-20 00:32:26
+  bar: false
+  event_type: MyString
+
+two:
+  room_id: 1
+  user_id: 1
+  start: 2013-02-20 00:32:26
+  finish: 2013-02-20 00:32:26
+  bar: false
+  event_type: MyString

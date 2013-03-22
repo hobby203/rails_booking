@@ -1,0 +1,11 @@
+td {
+  vertical-align: middle !important;
+}
+.center {
+    text-align: center !important;
+}
+
+label {
+  display: block;
+  width: 200px;
+}

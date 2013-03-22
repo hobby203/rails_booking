@@ -1,0 +1,62 @@
+<!-- template for booking confirmation email -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <!-- addresses the user with their full name -->
+    <h2><%= @user.fullname %></h2>
+    <p>
+      This email is to confirm the details of the booking that you recently placed with us.<br/>
+      <table> <!-- table for showing booking details -->
+        <tr>
+          <td><strong>Room</strong></td>
+          <td><%= Room.find(@booking.room_id).name %></td> <!-- displays booking's room -->
+        </tr>
+        <tr>
+          <td><strong>Event Type</strong></td>
+          <td><%= @booking.event_type %></td> <!-- displays booking event type -->
+        </tr>
+        <tr>
+          <td><strong>Start<strong></td>
+          <td><%= @booking.start %></td> <!-- displays booking start -->
+        </tr>
+        <tr>
+          <td><strong>Finish<strong></td>
+          <td><%= @booking.finish %></td>  <!-- displays booking finish -->
+        </tr>
+        <tr>
+          <td><strong>Total Attendees</strong></td>
+          <td><%= @booking.attendees %></td> <!-- displays total atendees for booking -->
+        </tr>
+        <tr>
+          <td><strong>Bar</strong></td>
+          <% if @booking.bar %> <!-- checks if the booking has the bar -->
+            <td>&#10004;</td> <!-- displays a check mark if it does -->
+          <% else %>
+            <td>&#10006;</td> <!-- otherwise displays a cross -->
+          <% end %>
+        </tr>
+        <tr>
+          <td><strong>Total Price</strong></td>
+          <td><%= "£"+@booking.total_price.to_f.to_s %></td> <!-- displays the booking's total cost -->
+        </tr>
+        <tr>
+          <td><strong>Extra Details</strong></td>
+          <td><%= @booking.details %></td> <!-- displays any extra details about the booking -->
+        </tr>
+      </table>
+    </p>
+    <!-- information about how to pay -->
+    <p>
+      There are several payment methods available, however cheques are preffered. Please make any cheques payable to "Grassington Town Hall Comittee". For more information, and other methods, please contact us via either replying to this email, or via our landline at <strong>01756 752195</strong>
+    </p>
+    <p>
+      If any of these details seem incorrect, you can alter your booking via the website
+    </p>
+    <p>
+      If you feel receiving this email is in error, please either reply to this email, or call us on  <strong>01756 752195</strong>.
+    </p> 
+  </body>
+</html>
