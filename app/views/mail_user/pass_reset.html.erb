@@ -1,13 +1,17 @@
+<!-- template for password reset email -->
 <!DOCTYPE html>
 <html>
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
+    <!-- address user by their proper name -->
     <h2><%= @user.fullname %></h2>
+    <!-- inform them of their password reset -->
     <p>
-      We recently received a request to reset your password, it has been changed to <strong><%= @password %></strong>. Please continue to login with your account, and change your password to something more memorable.
+      We recently received a request to reset your password, it has been changed to <strong><%= @password %></strong> <!-- their new password -->. Please continue to login with your account, and change your password to something more memorable.
     </p>
+    <!-- information for if the user has received the wrong email -->
     <p>
       If you feel receiving this email is in error, please either reply to this email, or call us on  <strong>01756 752195</strong>.
     </p> 

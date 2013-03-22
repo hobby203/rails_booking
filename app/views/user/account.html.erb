@@ -1,58 +1,59 @@
+<!-- template for showing user account -->
 <h2>
   Account
   <small>
-    <p>Welcome back, <%= @current_user.fullname %></p>
+    <p>Welcome back, <%= @current_user.fullname %></p> <!-- greeting for user, with proper name -->
   </small>
 </h2>
 
 <div class="row-fluid">
   <div class="span8">
     <div class="well">
-      <table>
+      <table> <!-- starts a table for user details -->
         <tr>
           <td style="width: 150px"><strong>Username:</strong></td>       
-          <td><%= @current_user.username %></td>
+          <td><%= @current_user.username %></td> <!-- user's username -->
         </tr>
 
         <tr>
           <td><strong>Email Address: </strong></td>
-          <td><%= @current_user.email %></td>
+          <td><%= @current_user.email %></td> <!-- email address of user -->
         </tr>
 
         <tr>
           <td><strong>Title:</strong></td>     
-          <td><%= @current_user.title %></td>
+          <td><%= @current_user.title %></td> <!-- user's title, e.g. Mr -->
         </tr>
 
         <tr>
           <td><strong>Forename:</strong></td>
-          <td><%= @current_user.forename %></td>
+          <td><%= @current_user.forename %></td> <!-- user's forename -->
         </tr>
 
         <tr>
           <td><strong>Surname:</strong></td>
-          <td><%= @current_user.surname %></td>
+          <td><%= @current_user.surname %></td> <!-- user's surname -->
         </tr>
 
 
-        <% if @current_user.local %>
+        <% if @current_user.local %> <!-- checks if the user lives in the local area -->
           <tr>
             <td><strong>Local:</strong></td>
-            <td>&#10004;</td>
+            <td>&#10004;</td> <!--displays a checkmark if they do -->
           </tr>
         <% end %>
 
-        <% if @current_user.over_18 %>
+        <% if @current_user.over_18 %> <!-- checks if the user is over 18 -->
           <tr>
             <td><strong>Over 18:</strong></td>
-            <td>&#10004;</td>
+            <td>&#10004;</td> <!-- displays a checkmark if they are -->
           </tr>
         <% end %>
 
-        <% if @current_user.admin %>
+        <% if @current_user.admin %> <!-- checks if the user is an admin -->
           <tr>
             <td><strong>Admin:</strong></td>
-            <td>&#10004;</td>
+            <td>&#10004;</td> <!-- displays a checkmark if they are -->
           </tr>
         <% end %>
 
@@ -62,8 +63,8 @@
 </div>
 <div class="row-fluid">
   <div class="span8">
-    <%= link_to "Change Password", {:action => "password"}, :class => "btn btn-info" %>
-    <%= link_to "Edit Account", {:action => "edit"}, :class => "btn btn-warning" %>
-    <%= link_to "Delete Account", {:action => "delete"}, :class => "btn btn-danger" %>
+    <%= link_to "Change Password", {:action => "password"}, :class => "btn btn-info" %> <!-- button to change user password -->
+    <%= link_to "Edit Account", {:action => "edit"}, :class => "btn btn-warning" %> <!-- button to change user details -->
+    <%= link_to "Delete Account", {:action => "delete"}, :class => "btn btn-danger" %> <!-- button to delete the account -->
   </div>
 </div>

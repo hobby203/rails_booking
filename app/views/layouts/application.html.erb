@@ -1,3 +1,4 @@
+<!-- template for whole site, rendered with every page -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,7 +8,7 @@
     <%= javascript_include_tag  "bootstrap",        :media => "all" %>
     <%= stylesheet_link_tag     "application",      :media => "all" %>
     <!-- creates favicon for webpage -->
-    <%= favicon_link_tag 'favicon.ico' %>
+    <%= favicon_link_tag %>
     <!-- tags to prevent XSRF attacks -->
     <%= csrf_meta_tags %>
   </head>

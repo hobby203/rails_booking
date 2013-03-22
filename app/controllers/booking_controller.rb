@@ -3,14 +3,19 @@ class BookingController < ApplicationController
   before_filter :logged_in? ##makes sure the user is logged in before they can see any bookings
 
   def view ##function for viewing all bookings
-    if params[:view] == "own" ##checks if the user wants to see just their own bookings
-      @bookings = @current_user.bookings ##finds all the bookings belonging to the user logged in
-      @title = "Viewing Your Bookings" ##creates the title for the page
-      @own = true ##tells the page that the user wants to only see their own bookings, so it can create a link to see all bookings
-    elsif params[:view] == "all" ##checks if the user wants to see all the bookings
-      @bookings = Booking.find(:all) ##selects all bookings in the database
-      @title = "Viewing All Bookings" ##creates the title for the page
-      @own = false ##tells the page that the user isn't viewing just their own bookings, so it can create a link to see just their own
+    if Booking.any?
+      if params[:view] == "own" ##checks if the user wants to see just their own bookings
+        @bookings = @current_user.bookings ##finds all the bookings belonging to the user logged in
+        @title = "Viewing Your Bookings" ##creates the title for the page
+        @own = true ##tells the page that the user wants to only see their own bookings, so it can create a link to see all bookings
+      else ##otherwise
+        @bookings = Booking.find(:all) ##selects all bookings in the database
+        @title = "Viewing All Bookings" ##creates the title for the page
+        @own = false ##tells the page that the user isn't viewing just their own bookings, so it can create a link to see just their own
+      end
+    else
+      flash[:info] = "There are no bookings at this time"
+      redirect_to request.referer
     end
   end
 
@@ -64,7 +69,12 @@ class BookingController < ApplicationController
   end
 
   def edit ##function for creating the page to edit a booking
-    @booking_toEdit = Booking.find(params[:id]) ##finds the booking that needs editing, and creates an object to store it, so that the forms will already be filled in
+    begin
+      @booking_toEdit = Booking.find(params[:id]) ##finds the booking that needs editing, and creates an object to store it, so that the forms will already be filled in
+    rescue ActiveRecord::RecordNotFound ##happens if the ID can't be found in the database
+      flash[:error] = "Booking not found with that ID, did you type it in yourself?" ##tells the user it didn't work
+      redirect_to :action => "view" ##sends them back to the view bookings screen
+    end
   end
 
   def process_edit #function for actually editing the booking
@@ -79,21 +89,24 @@ class BookingController < ApplicationController
   end
 
   def delete ##function for creating the page to delete a booking
-    @booking_toDelete = Booking.find(params[:id]) ##finds the booking that needs deleting, and creates an object to store it so the view can tell the user what they're deleting
+    begin
+      @booking_toDelete = Booking.find(params[:id]) ##finds the booking that needs deleting, and creates an object to store it so the view can tell the user what they're deleting
+    rescue ActiveRecord::RecordNotFound ##happens if the booking cannot be found in the database
+      flash[:error] = "Booking not found with that ID, did you type it in yourself?" ##tells the user it didn't work
+      redirect_to :action => "view" ##sends them back to the view screen
+    end  
   end
 
   def process_delete ##function for actually deleting a booking
     @booking_toDelete = Booking.find(params[:id]) ##finds the booking to delete from the database
     @booking_toDelete.destroy ##destroys the booking
     flash[:message] = "Booking removed successfully" ##tells the user the booking was deleted fine
-    redirect_to :action => "view", :view => "own" ##redirects them back to viewing their own bookings
+    redirect_to :action => "view" ##redirects them back to viewing their own bookings
   end
 
   def check_taken(currentBooking, existingBooking) ##function for checking if 2 bookings will overlap
-
     @currentBooking = currentBooking ##sets the current booking as the one passed to the function
     @existingBooking = existingBooking ##sets the new booking as the one passed to the function
-
     if @currentBooking.start == @existingBooking.start ##if they start at the same time
       @taken = true ##tells the program the booking can't happen
     elsif @currentBooking.finish == @existingBooking.finish ##if they finish at the same time
@@ -104,4 +117,5 @@ class BookingController < ApplicationController
       @taken = true ##tells the program the booking can't happen
     end
   end
+
 end

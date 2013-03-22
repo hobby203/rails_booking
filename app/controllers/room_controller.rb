@@ -2,7 +2,12 @@ class RoomController < ApplicationController
   before_filter :is_admin?, :except => :view ##makes sure that users can only view rooms, unless they are an admin
   
   def view ##function for showing the view for viewing rooms
-    @rooms = Room.find(:all) ##finds all the rooms in the database and puts them into an array of objects
+    if Room.any?
+      @rooms = Room.find(:all) ##finds all the rooms in the database and puts them into an array of objects
+    else
+      flash[:info] = "There are no rooms available at this time"
+      redirect_to root_url
+    end
   end
 
   def new ##function for showing the form to create a new room
@@ -22,7 +27,12 @@ class RoomController < ApplicationController
   end
 
   def edit ##function for showing the form to edit a room
-    @room_toEdit = Room.find(params[:id]) ##creates a new object for the room to be edited, so that the form will already be filled in for the user
+    begin
+      @room_toEdit = Room.find(params[:id]) ##creates a new object for the room to be edited, so that the form will already be filled in for the user
+    rescue ActiveRecord::RecordNotFound ##occurs if the specified ID doesn't have a room associated with it
+      flash[:error] = "Room not found, did you type the ID in yourself?" ##tells the user it went wrong
+      redirect_to :action => "view" ##sends them back to the view rooms
+    end
   end
 
   def process_edit ##function for actually editing a room
@@ -36,7 +46,12 @@ class RoomController < ApplicationController
   end
 
   def delete ##function for showing the delete button for a room
-    @room_toDelete = Room.find(params[:id]) ##finds room by its ID, so the view knows which room's being deleted
+    begin
+      @room_toDelete = Room.find(params[:id]) ##finds room by its ID, so the view knows which room's being deleted
+    rescue ActiveRecord::RecordNotFound ##occurs when the ID cannot be found in the database
+      flash[:error] = "Room not found, did you type the ID in yourself?" ##tells the user it went wrong
+      redirect_to :action => "view" ##sends the user back to the view page
+    end
   end
 
   def process_delete ##function for actually deleting a room

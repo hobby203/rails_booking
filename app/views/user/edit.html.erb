@@ -1,10 +1,11 @@
+<!-- template for editing a user -->
 <div class="row-fluid">
   <div class="span8 offset2">
-    <% if @user_toEdit.errors.any? %>
+    <% if @user_toEdit.errors.any? %> <!-- if the user has already been edited, and something went wrong -->
       <div class="alert alert-error">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <% @user_toEdit.errors.full_messages.each do |msg| %>
-            <%= msg %><br/>
+        <% @user_toEdit.errors.full_messages.each do |msg| %> <!-- iterates through list of errors -->
+            <%= msg %><br/> <!-- outputs error -->
         <% end %>
       </div>
     <% end %>
@@ -12,31 +13,29 @@
 </div>
 <div class="row-fluid">
   <div class="span2">
-    <h2>Editing User</h2>
+    <h2>Editing User</h2> <!-- page title -->
   </div>
   <div class="span3 offset1">
     <br/>
+    <!-- form for editing user -->
     <%= form_for @user_toEdit, :url => {:action => "process_edit", :id => @user_toEdit.id} do |u| %>
-      <%= u.text_field :username, :placeholder => "Desired Username" %>
-      <%= u.text_field :email, :placeholder => "Email Address" %>
-      <%= u.text_field :email_confirmation, :placeholder => "Confirm Email Address" %>
-      <%= u.select(:title, [["Dr","Dr"],["Mr","Mr"],["Mrs","Mrs"],["Ms","Ms"],["Miss","Miss"],["Mx","Mx"]], :include_blank => "Select Title") %>
-      <%= u.text_field :forename, :placeholder => "First Name" %>
-      <%= u.text_field :surname, :placeholder => "Surname" %><br/>
-
-      Are you over 18? <%= u.check_box :over_18 %><br/>
-
-      Do you live in the local area? <%= u.check_box :local %><br/>
-
-      <% if @current_user && @current_user.admin %>
-        Will this user be an admin? <%= u.check_box :admin %>
+      <%= u.text_field :username, :placeholder => "Desired Username" %> <!-- text field for username -->
+      <%= u.text_field :email, :placeholder => "Email Address" %> <!-- text field for user email address -->
+      <%= u.text_field :email_confirmation, :placeholder => "Confirm Email Address" %> <!-- text field for email confirmation -->
+      <%= u.select(:title, [["Dr","Dr"],["Mr","Mr"],["Mrs","Mrs"],["Ms","Ms"],["Miss","Miss"],["Mx","Mx"]], :include_blank => "Select Title") %> <!-- select box for users's title -->
+      <%= u.text_field :forename, :placeholder => "First Name" %> <!-- text field for user's forename -->
+      <%= u.text_field :surname, :placeholder => "Surname" %><br/> <!-- text field for user's surname -->
+      Are you over 18? <%= u.check_box :over_18 %><br/> <!-- checkbox for if the user is over 18 -->
+      Do you live in the local area? <%= u.check_box :local %><br/> <!-- checkbox for if the user is local -->
+      <% if @current_user && @current_user.admin %> <!-- if someone is logged in, and they're an admin -->
+        Will this user be an admin? <%= u.check_box :admin %> <!-- checkbox for if the user is an admin -->
       <% end %>
   </div>
 </div>
 <div class="row-fluid">
   <div class="span4 offset3">
-      <%= u.submit "Confirm", :class => "btn btn-info" %>
+      <%= u.submit "Confirm", :class => "btn btn-info" %> <!-- button to confirm -->
     <% end %>
-    <%= link_to "Cancel", :back, :class => "btn btn-warning" %>
+    <%= link_to "Cancel", :back, :class => "btn btn-warning" %> <!-- button to cancel -->
   </div>
 </div>

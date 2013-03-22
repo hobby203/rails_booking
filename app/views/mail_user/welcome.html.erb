@@ -1,14 +1,18 @@
+<!-- template for welcome email -->
 <!DOCTYPE html>
 <html>
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
+    <!-- address user by their proper name -->
     <h2>Welcome, <%= @user.fullname %></h2>
+    <!-- confirmation of account creation -->
     <p>
       This is just a quick confirmation to say that your account was created succesfully,
-      your username is: <%= @user.username %>
+      your username is: <strong><%= @user.username %></strong> <!-- their new username -->
     </p>
+    <!-- information for if the user receives the wrong email -->
     <p>
       If you feel receiving this email is in error, please either reply to this email, or call us on  <strong>01756 752195</strong>.
     </p> 

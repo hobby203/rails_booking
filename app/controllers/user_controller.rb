@@ -78,6 +78,7 @@ class UserController < ApplicationController
   end
 
   def view ##function for viewing all users (admin only)
+    ##no clause required here for if there are no users, as there will have to be at least one to see this (the user logged in)
     @allUsers = User.find(:all) ##creates an array containing all users in the database
   end
 

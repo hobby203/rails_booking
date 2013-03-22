@@ -1,12 +1,14 @@
+<!-- template for login page -->
 <div class="row-fluid">
   <div class="span2">
-    <h3>Login</h3>
+    <h3>Login</h3> <!-- page title -->
   </div>
   <div class="span3 offset1">
     <br/>
+    <!-- login form -->
     <%= form_tag :action => "process_login" do %>
-      <%= text_field "user", "username", :placeholder => "Username" %>
-      <%= password_field "user", "password", :placeholder => "Password" %>
+      <%= text_field "user", "username", :placeholder => "Username" %> <!-- text input for username -->
+      <%= password_field "user", "password", :placeholder => "Password" %> <!-- text input for password, shows * instead of actual characters -->
   </div>
   <div class="span3">
     <br/>
@@ -14,9 +16,9 @@
 </div>
 <div class="row-fluid">
   <div class="span3 offset3">
-      <%= submit_tag "Login", :class => "btn btn-primary" %>
-      <%= link_to "Register", {:action => "new"}, :class => "btn btn-info", :method => "get" %><br/>
-      <%= link_to "Forgot password?", :action => "reset" %>
+      <%= submit_tag "Login", :class => "btn btn-primary" %> <!-- button for submit -->
+      <%= link_to "Register", {:action => "new"}, :class => "btn btn-info", :method => "get" %><br/> <!-- button to register new account -->
+      <%= link_to "Forgot password?", :action => "reset" %> <!-- link to password reset for forgotten details -->
     <% end %>
   </div>
 </div>

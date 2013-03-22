@@ -1,4 +1,4 @@
-<!-- view for viewing all bookings -->
+<!-- template for viewing all bookings -->
 <h2><%= @title %></h2><br/> <!-- creates the title, depending on whether the user has chosen to view their own, or all bookings  -->
 <% if @own %> <!-- if the user is only viewing their own bookings -->
   <%= link_to "Show All Bookings", {:action => "view", :view => "all"}, :class => "btn btn-success pull-right" %> <!-- show a link to view all bookings -->
