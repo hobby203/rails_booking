@@ -20,6 +20,8 @@
     <!-- form for editing user -->
     <%= form_for @user_toEdit, :url => {:action => "process_edit", :id => @user_toEdit.id} do |u| %>
       <%= u.text_field :username, :placeholder => "Desired Username" %> <!-- text field for username -->
+      <%= u.password_field :password, :placeholder => "Password" %> <!-- password field for either new password, or old one -->
+      <%= u.password_field :password_confirmation, :placeholder => "Confirm Password" %> <!-- field for confirming password -->
       <%= u.text_field :email, :placeholder => "Email Address" %> <!-- text field for user email address -->
       <%= u.text_field :email_confirmation, :placeholder => "Confirm Email Address" %> <!-- text field for email confirmation -->
       <%= u.select(:title, [["Dr","Dr"],["Mr","Mr"],["Mrs","Mrs"],["Ms","Ms"],["Miss","Miss"],["Mx","Mx"]], :include_blank => "Select Title") %> <!-- select box for users's title -->

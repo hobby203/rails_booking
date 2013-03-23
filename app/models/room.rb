@@ -6,9 +6,10 @@ class Room < ActiveRecord::Base
 
   ## validations ##
 
-  validates :base_rate, :capacity, :numericality => {:only_integer => true} ##makes sure capacity and base_rate are both integers
+  validates :base_rate, :capacity, :numericality => {:only_integer => true, :greater_than => 0} ##makes sure capacity and base_rate are both integers
   validates :kitchen, :stage, :inclusion => {:in => [true, false]} ## makes sure that kitchen & stage are both boolean
   validates :description, :length => {:within => 10...1024} ##makes sure the description isn't too long, or too short
   validates :name, :presence => true
+  validates :name, :uniqueness => true
 
 end

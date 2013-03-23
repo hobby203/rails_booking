@@ -11,13 +11,13 @@ class User < ActiveRecord::Base
   ## validations ##
 
   validates :forename, :surname, :username, :email, :password, :presence => true
-  validates :email, :password, :confirmation => true ##creates virtual fields for confirming email & password
+  validates :email, :password, :confirmation => true ##creates virtual attributes for confirming email & password
   validates :admin, :local, :over_18, :inclusion => {:in => [true, false]} ##makes sure these fields are boolean
   validates :title, :inclusion => {:in => %w(Dr Mrs Mr Miss Ms Mx)} ##makes sure title is correct
-  validates :forename, :length => {:maximum => 250} ##makes sure their first name isn't too long
-  validates :surname, :length => {:maximum => 30} ##makes sure their surname isn't too long
+  validates :forename, :length => {:maximum => 250} ##makes sure their first name isn't too long, as set out by deed poll
+  validates :surname, :length => {:maximum => 30} ##makes sure their surname isn't too long, as set out by deed poll
   validates :password, :length => {:minimum => 8} ##makes sure the password is at least 8 characters
-  validates :email, :username, :password_hash, :length => {:maximum => 255} ##makes sure all other fields aren't too long
+  validates :email, :username, :length => {:maximum => 255} ##makes sure all other fields aren't too long
   validates :username, :email, :uniqueness => true ##makes sure that the username or email is unique, to avoid login problems
 
   ## functions ##

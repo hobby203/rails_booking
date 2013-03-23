@@ -9,6 +9,7 @@ class Booking < ActiveRecord::Base
 
   validates :bar, :inclusion => {:in => [true, false]} ## makes sure that bar is boolean
   validates :event_type, :start, :finish, :presence => true ##makes sure that these fields are present
-  validates :room_id, :user_id, :attendees, :total_price, :numericality => {:only_integer => true, :greater_than => 0} ## makes sure that room_id and user_id are both integers
+  validates :room_id, :user_id, :attendees, :numericality => {:only_integer => true, :greater_than => 0} ## makes sure that room_id and user_id are both integers
+  validates :total_price, :numericality => {:greater_than => 0} ## makes sure that total_price is greater than 0
 
 end

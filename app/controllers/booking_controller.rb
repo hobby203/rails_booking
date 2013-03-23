@@ -4,7 +4,7 @@ class BookingController < ApplicationController
 
   def view ##function for viewing all bookings
     if Booking.any?
-      if params[:view] == "own" ##checks if the user wants to see just their own bookings
+      if params[:view] == "own" && @current_user.bookings.any? ##checks if the user wants to see just their own bookings, and they have bookings made
         @bookings = @current_user.bookings ##finds all the bookings belonging to the user logged in
         @title = "Viewing Your Bookings" ##creates the title for the page
         @own = true ##tells the page that the user wants to only see their own bookings, so it can create a link to see all bookings
@@ -30,6 +30,7 @@ class BookingController < ApplicationController
     else
       @newBooking.total_price = Room.find(@newBooking.room_id).base_rate.to_i ##otherwise sets price to the room's full rate
     end
+    @newBooking.total_price = ((@newBooking.finish - @newBooking.start).to_f/3600)*@newBooking.total_price ##converts the length of the booking to hours, and then multiplies it by the hourly rate to get the final price
     if @newBooking.bar ##checks if the user wanted the Bar facilities
       @newBooking.total_price = (@newBooking.total_price + 50).to_i ##if they did, adds the cost of the bar onto the booking price
     end
@@ -57,14 +58,13 @@ class BookingController < ApplicationController
     elsif @newBooking.finish < @newBooking.start ##makes sure that the booking doesn't finish before it starts
       flash[:error] = "Your finish date can't be before the booking starts" ##tells the user they're doing it wrong
       render :action => "new" ##sends them back to try again
-
     elsif @newBooking.save ##tries to save the new booking
       MailUser.confirm_booking(@newBooking.id).deliver ##sends an email to the user with the booking details, along with further instruction
       flash[:message] = "New booking created successfully" ##tells the user the booking was created successfully
       redirect_to :action => "view", :view => "own" ##redirects them back to the view page
 
     else
-      render :action => "new", :cost => @newBooking.total_price ##otherwise, sends them back to the form, where they will be shown the errors with the booking
+      render :action => "new" ##otherwise, sends them back to the form, where they will be shown the errors with the booking
     end
   end
 

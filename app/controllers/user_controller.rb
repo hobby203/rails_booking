@@ -28,7 +28,12 @@ class UserController < ApplicationController
 
   def edit ##function for showing the form to edit a user
     if params[:id] && @current_user.admin ##checks to see if the current user is an admin, and a user ID was supplied
-      @user_toEdit = User.find(params[:id]) ##finds the user to edit by the ID supplied
+      begin
+        @user_toEdit = User.find(params[:id]) ##finds the user to edit by the ID supplied
+      rescue ActiveRecord::RecordNotFound ##happens if the id doesn't exist
+        flash[:error] = "User by that ID not found, did you input it yourself?" ##tells the user they went wrong
+        redirect_to :action => "view" ##banishes user to from whence they came
+      end
     else
       @user_toEdit = @current_user ##otherwise sets the user to edit as the current user
     end
@@ -84,8 +89,13 @@ class UserController < ApplicationController
 
   def delete ##function for showing page to delete user
     if params[:id] && @current_user.admin ##checks to see if an ID has been supplied, and the user is an admin
-      @user_toDelete = User.find(params[:id]) ##finds the user to delete by their ID as supplied
-      @title = "Removing User Account" ##title to show that the user is deleting another account
+      begin
+        @user_toDelete = User.find(params[:id]) ##finds the user to delete by their ID as supplied
+        @title = "Removing User Account" ##title to show that the user is deleting another account
+      rescue ActiveRecord::RecordNotFound ##happens when the ID given is not found in the database
+        flash[:error] == "User not found by that ID, did you input it yourself?" ##tells them they went wrong
+        redirect_to :action => "view" ##sends them back to where they came from
+      end
     else
       @user_toDelete = @current_user ##otherwise sets the user to delete to be the current logged in user
       @title = "Removing your Account" ##title to reflect this
