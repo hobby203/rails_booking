@@ -93,7 +93,7 @@ class UserController < ApplicationController
         @user_toDelete = User.find(params[:id]) ##finds the user to delete by their ID as supplied
         @title = "Removing User Account" ##title to show that the user is deleting another account
       rescue ActiveRecord::RecordNotFound ##happens when the ID given is not found in the database
-        flash[:error] == "User not found by that ID, did you input it yourself?" ##tells them they went wrong
+        flash[:error] = "User not found by that ID, did you input it yourself?" ##tells them they went wrong
         redirect_to :action => "view" ##sends them back to where they came from
       end
     else
