@@ -17,7 +17,6 @@
   </div>
   <div class="span7 offset1">
       <%= form_for @booking_toEdit, :url => { :action => :process_edit } do |b| %> <!-- starts the form for the booking_toEdit, telling RoR that the submit button will link to the "process_edit" function -->
-      <%= b.collection_select :room_id, Room.all, :id, :name %> <!-- select box for the booking's room -->
       <%= b.text_field :event_type, :placeholder => "Type of Event" %> <!-- text input for the booking event's type -->
       <%= b.text_field :attendees, :placeholder => "Number in Attendance" %> <!-- text input for number of people in attendance -->
       <%= b.text_area :details, {:size => "10x10", :placeholder => "Any extra details?"} %> <!-- text field for any extra details about the event -->
