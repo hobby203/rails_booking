@@ -4,10 +4,12 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 development:
-  adapter: sqlite3 ##tell rails we're using an SQLite3 db system
-  database: db/development.sqlite3 ##set database location
-  pool: 5 ##set sqlite pool size
-  timeout: 5000 ##set sqlite timeout length
+  adapter: mysql2 ##tell rails we're using an SQLite3 db system
+  database: townhall ##set database location
+  username: townhall ##set sqlite pool size
+  password: 3H8xfEUWAa627w4W  ##set sqlite timeout length
+  host: localhost
+  port: 3306
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
